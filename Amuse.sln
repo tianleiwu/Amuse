@@ -10,9 +10,11 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Debug-Cuda|Any CPU = Debug-Cuda|Any CPU
 		Debug-DML|Any CPU = Debug-DML|Any CPU
+		Debug-TensorRT|Any CPU = Debug-TensorRT|Any CPU
 		Release|Any CPU = Release|Any CPU
 		Release-Cuda|Any CPU = Release-Cuda|Any CPU
 		Release-DML|Any CPU = Release-DML|Any CPU
+		Release-TensorRT|Any CPU = Release-TensorRT|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -21,12 +23,16 @@ Global
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Debug-Cuda|Any CPU.Build.0 = Debug-Cuda|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Debug-DML|Any CPU.ActiveCfg = Debug-DML|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Debug-DML|Any CPU.Build.0 = Debug-DML|Any CPU
+		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Debug-TensorRT|Any CPU.ActiveCfg = Debug-TensorRT|Any CPU
+		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Debug-TensorRT|Any CPU.Build.0 = Debug-TensorRT|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release-Cuda|Any CPU.ActiveCfg = Release-Cuda|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release-Cuda|Any CPU.Build.0 = Release-Cuda|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release-DML|Any CPU.ActiveCfg = Release-DML|Any CPU
 		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release-DML|Any CPU.Build.0 = Release-DML|Any CPU
+		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release-TensorRT|Any CPU.ActiveCfg = Release-TensorRT|Any CPU
+		{135BE435-46D9-4CF8-9B6F-E1F420CB005A}.Release-TensorRT|Any CPU.Build.0 = Release-TensorRT|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

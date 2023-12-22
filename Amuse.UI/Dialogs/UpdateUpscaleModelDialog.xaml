@@ -78,7 +78,7 @@
 
                     <StackPanel Margin="0,0,4,0">
                         <TextBlock Text="Execution Provider" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource ExecutionProviderType}}" SelectedItem="{Binding UpdateModelSet.ExecutionProvider}" ItemContainerStyle="{StaticResource ExecutionProviderTypes}"/>
+                        <ComboBox ItemsSource="{Binding UISettings.SupportedExecutionProviders}" SelectedItem="{Binding UpdateModelSet.ExecutionProvider}" />
                     </StackPanel>
                     <TextBlock />
                     <StackPanel Margin="0,0,4,0">

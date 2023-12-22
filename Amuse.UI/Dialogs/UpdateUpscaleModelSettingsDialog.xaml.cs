@@ -40,6 +40,8 @@ namespace Amuse.UI.Dialogs
                 .ToList();
             InitializeComponent();
         }
+
+        public AmuseSettings UISettings => _uiSettings;
         public AsyncRelayCommand WindowMinimizeCommand { get; }
         public AsyncRelayCommand WindowRestoreCommand { get; }
         public AsyncRelayCommand WindowMaximizeCommand { get; }

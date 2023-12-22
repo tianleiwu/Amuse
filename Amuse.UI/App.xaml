@@ -94,13 +94,6 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
 
-
-        <ObjectDataProvider x:Key="ExecutionProviderType" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="coreConfig:ExecutionProvider"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-
         <ObjectDataProvider x:Key="ExecutionModeType" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="onnxEnums:ExecutionMode"/>
@@ -2048,20 +2041,6 @@
             </Setter>
         </Style>
 
-
-
-
-        <Style x:Key="ExecutionProviderTypes" TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
-            <Setter Property="Visibility" Value="Collapsed" />
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding}" Value="Cpu">
-                    <Setter Property="Visibility" Value="Visible" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding}" Value="DirectML">
-                    <Setter Property="Visibility" Value="Visible" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
 
         <Style x:Key="ButtonGenerateStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Content" Value="Generate" />

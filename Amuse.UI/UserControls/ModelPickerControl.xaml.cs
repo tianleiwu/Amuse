@@ -3,6 +3,7 @@ using Amuse.UI.Models;
 using Microsoft.Extensions.Logging;
 using OnnxStack.Core;
 using OnnxStack.StableDiffusion.Common;
+using OnnxStack.StableDiffusion.Config;
 using OnnxStack.StableDiffusion.Enums;
 using System;
 using System.Collections.Generic;
@@ -125,10 +126,24 @@ namespace Amuse.UI.UserControls
                     }
                 }
 
-                SelectedModel.ModelSet.InitBlankTokenArray();
-                SelectedModel.ModelSet.ApplyConfigurationOverrides();
-                await _stableDiffusionService.AddModelAsync(SelectedModel.ModelSet);
-                SelectedModel.IsLoaded = await _stableDiffusionService.LoadModelAsync(SelectedModel.ModelSet);
+                //TODO: ApplyConfigurationOverrides updates the ModelConfigurations, so clone the item here until fixed
+                var modelSet = SelectedModel.ModelSet with
+                {
+                    ModelConfigurations = SelectedModel.ModelSet.ModelConfigurations.Select(x => new OnnxStack.Core.Config.OnnxModelConfig
+                    {
+                        DeviceId = x.DeviceId,
+                        ExecutionMode = x.ExecutionMode,
+                        ExecutionProvider = x.ExecutionProvider,
+                        InterOpNumThreads = x.InterOpNumThreads,
+                        IntraOpNumThreads = x.IntraOpNumThreads,
+                        OnnxModelPath = x.OnnxModelPath,
+                        Type = x.Type,
+                    }).ToList()
+                };
+                modelSet.InitBlankTokenArray();
+                modelSet.ApplyConfigurationOverrides();
+                await _stableDiffusionService.AddModelAsync(modelSet);
+                SelectedModel.IsLoaded = await _stableDiffusionService.LoadModelAsync(modelSet);
             }
             catch (Exception ex)
             {

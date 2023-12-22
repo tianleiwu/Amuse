@@ -84,9 +84,23 @@ namespace Amuse.UI.UserControls
                     }
                 }
 
-                SelectedModel.ModelSet.ApplyConfigurationOverrides();
-                await _upscaleService.AddModelAsync(SelectedModel.ModelSet);
-                SelectedModel.IsLoaded = await _upscaleService.LoadModelAsync(SelectedModel.ModelSet);
+                //TODO: ApplyConfigurationOverrides updates the ModelConfigurations, so clone the item here until fixed
+                var modelSet = SelectedModel.ModelSet with
+                {
+                    ModelConfigurations = SelectedModel.ModelSet.ModelConfigurations.Select(x => new OnnxStack.Core.Config.OnnxModelConfig
+                    {
+                        DeviceId = x.DeviceId,
+                        ExecutionMode = x.ExecutionMode,
+                        ExecutionProvider = x.ExecutionProvider,
+                        InterOpNumThreads = x.InterOpNumThreads,
+                        IntraOpNumThreads = x.IntraOpNumThreads,
+                        OnnxModelPath = x.OnnxModelPath,
+                        Type = x.Type,
+                    }).ToList()
+                };
+                modelSet.ApplyConfigurationOverrides();
+                await _upscaleService.AddModelAsync(modelSet);
+                SelectedModel.IsLoaded = await _upscaleService.LoadModelAsync(modelSet);
             }
             catch (Exception ex)
             {

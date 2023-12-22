@@ -1,0 +1,28 @@
+﻿using OnnxStack.StableDiffusion.Enums;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Windows;
+using System.Windows.Data;
+
+namespace Amuse.UI.Converters
+{
+    public class DiffuserVisibilityConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Length == 2 && values[0] is List<DiffuserType> viewTypes && values[1] is List<DiffuserType> modelTypes)
+            {
+                return viewTypes.Any(modelTypes.Contains) ? Visibility.Visible : Visibility.Collapsed;
+            }
+
+            return Visibility.Collapsed; 
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

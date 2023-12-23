@@ -17,6 +17,9 @@
         <BitmapImage x:Key="PlaceholderIcon" UriSource="/Images/Icon.png" />
         <BitmapImage x:Key="PlaceholderImage" UriSource="/Images/placeholder.png" />
         <BitmapImage x:Key="PlaceholderImageSmall" UriSource="/Images/placeholder_sm.png" />
+        <BitmapImage x:Key="PlaceholderImageModel" UriSource="/Images/Model.png" />
+        <BitmapImage x:Key="PlaceholderImageUpscale" UriSource="/Images/Upscale.png" />
+
         <Storyboard x:Key="LoadingAnimation">
             <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)" To="360" Duration="0:0:1" RepeatBehavior="Forever" />
         </Storyboard>
@@ -119,10 +122,9 @@
         </ObjectDataProvider>
 
 
-
-
-
-
+        <!--Accents-->
+        <SolidColorBrush x:Key="AccentColour1" Color="#FF0d72ba" />
+        <SolidColorBrush x:Key="AccentColour2" Color="#FF74b768" />
 
 
         <!-- Window Colours. Background, Border and TitleBar colours. -->
@@ -309,7 +311,7 @@
 
                     </UniformGrid>
 
-                       
+
 
                     <UniformGrid Columns="1" Height="30" IsEnabled="{Binding HasResult}">
                         <Button Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}}, Path=SaveImageCommand}" CommandParameter="{Binding}" ToolTip="Save Image File">

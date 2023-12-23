@@ -10,8 +10,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Name="UI">
     <UserControl.Resources>
+
+        <Style x:Key="ListViewImageCacheStyle" TargetType="{x:Type userControls:CachedImage}">
+            <Setter Property="CacheName" Value="{Binding Name}" />
+            <Setter Property="Placeholder" Value="{StaticResource PlaceholderImageModel}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsUserTemplate}" Value="False">
+                    <Setter Property="CacheName" Value="{Binding Template}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Category}" Value="Upscaler">
+                    <Setter Property="Placeholder" Value="{StaticResource PlaceholderImageUpscale}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+
         <DataTemplate x:Key="LayoutTileSmallViewTemplate">
-            <DockPanel>
+            <DockPanel >
                 <StackPanel DockPanel.Dock="Bottom" Background="{StaticResource ContainerBackground}">
                     <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="10" Margin="0,2,0,2" TextWrapping="Wrap"/>
                     <UniformGrid Columns="2"  HorizontalAlignment="Stretch"  Margin="3">
@@ -20,23 +35,12 @@
                     </UniformGrid>
                 </StackPanel>
                 <Grid  >
-                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Placeholder="{StaticResource PlaceholderImage}"   RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True">
-                        <userControls:CachedImage.Style>
-                            <Style TargetType="{x:Type userControls:CachedImage}">
-                                <Setter Property="CacheName" Value="{Binding Name}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsUserTemplate}" Value="False">
-                                        <Setter Property="CacheName" Value="{Binding Template}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </userControls:CachedImage.Style>
-                    </userControls:CachedImage>
+                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" />
                     <StackPanel>
                         <Border Background="Lime" Visibility="{Binding IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Installed" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
                         </Border>
-                        <Border Background="Aqua" Visibility="{Binding IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
+                        <Border Background="Gray" Visibility="{Binding IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Template" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
                         </Border>
                     </StackPanel>
@@ -56,24 +60,13 @@
                         <TextBlock Text="{Binding Template, Converter={StaticResource EnumDescriptionConverter}}" HorizontalAlignment="Right" Opacity=".7"/>
                     </UniformGrid>
                 </StackPanel>
-                <Grid  >
-                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Placeholder="{StaticResource PlaceholderImage}"   RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True">
-                        <userControls:CachedImage.Style>
-                            <Style TargetType="{x:Type userControls:CachedImage}">
-                                <Setter Property="CacheName" Value="{Binding Name}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsUserTemplate}" Value="False">
-                                        <Setter Property="CacheName" Value="{Binding Template}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </userControls:CachedImage.Style>
-                    </userControls:CachedImage>
+                <Grid>
+                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
                     <StackPanel>
                         <Border Background="Lime" Visibility="{Binding IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Installed" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
                         </Border>
-                        <Border Background="Aqua" Visibility="{Binding IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
+                        <Border Background="Gray" Visibility="{Binding IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Template" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
                         </Border>
                     </StackPanel>
@@ -88,18 +81,7 @@
         <DataTemplate x:Key="LayoutListViewTemplate">
             <DockPanel Background="{StaticResource ContainerBackground}">
                 <StackPanel DockPanel.Dock="Left" Width="50" Height="50">
-                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Placeholder="{StaticResource PlaceholderImage}"   RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True">
-                        <userControls:CachedImage.Style>
-                            <Style TargetType="{x:Type userControls:CachedImage}">
-                                <Setter Property="CacheName" Value="{Binding Name}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsUserTemplate}" Value="False">
-                                        <Setter Property="CacheName" Value="{Binding Template}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </userControls:CachedImage.Style>
-                    </userControls:CachedImage>
+                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
                 </StackPanel>
                 <DockPanel DockPanel.Dock="Right">
 
@@ -107,11 +89,11 @@
                         <Border Background="LimeGreen" Visibility="{Binding IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Installed" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
                         </Border>
-                        <Border Background="Aqua" Visibility="{Binding IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
+                        <Border Background="Gray" Visibility="{Binding IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Template" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
                         </Border>
                     </StackPanel>
-                  
+
 
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2">
                         <TextBlock Text="{Binding Template, Converter={StaticResource EnumDescriptionConverter}}" HorizontalAlignment="Left" FontSize="15" Opacity=".7"  />
@@ -154,7 +136,8 @@
         <!--Left Container-->
         <DockPanel Grid.Column="0">
 
-            <!--Left Container Bottom--><!--
+            <!--Left Container Bottom-->
+            <!--
             <Border DockPanel.Dock="Bottom" BorderBrush="{StaticResource ContainerBorder}" BorderThickness="1" MinWidth="350" Height="35" Margin="0,5,5,0">
                 <UniformGrid Columns="2">
                     <Button Content="Add StableDiffusion Model" Command="{Binding AddStableDiffusionModelCommand}"/>
@@ -273,7 +256,7 @@
                                         </UniformGrid>
                                     </StackPanel>
 
-                                  
+
 
                                 </StackPanel>
                             </DockPanel>
@@ -385,31 +368,32 @@
                             </StackPanel>
 
                             <!--Preview Images-->
-                            <UniformGrid DockPanel.Dock="Bottom" Columns="4" Rows="1" Margin="4">
+                            <UniformGrid DockPanel.Dock="Bottom" Columns="4" Rows="1" Margin="4" Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1"  >
-                                    <userControls:CachedImage Stretch="Uniform"
-                                   CacheName="{Binding SelectedModelTemplate.Name}" 
-                                    Placeholder="{Binding Source={StaticResource PlaceholderImageSmall}}"
-                                   ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0]}" 
-                                  />
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0]}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform"
-                                   CacheName="{Binding SelectedModelTemplate.Name}" 
-                                  ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1]}" 
-                                   Placeholder="{Binding Source={StaticResource PlaceholderImageSmall}}"/>
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1]}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform"
-                                   CacheName="{Binding SelectedModelTemplate.Name}" 
-                                  ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2]}" 
-                                   Placeholder="{Binding Source={StaticResource PlaceholderImageSmall}}"/>
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2]}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform"
-                                   CacheName="{Binding SelectedModelTemplate.Name}" 
-                                  ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3]}" 
-                                   Placeholder="{Binding Source={StaticResource PlaceholderImageSmall}}"/>
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3]}" />
+                                </Border>
+                            </UniformGrid>
+                            <UniformGrid DockPanel.Dock="Bottom" Columns="4" Rows="1" Margin="4" Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                                <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1"  >
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0]}" />
+                                </Border>
+                                <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1]}" />
+                                </Border>
+                                <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2]}" />
+                                </Border>
+                                <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
+                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3]}" />
                                 </Border>
                             </UniformGrid>
 
@@ -617,7 +601,7 @@
                             <Style.Triggers>
                                 <Trigger  Property="IsSelected" Value="True" >
                                     <Setter Property="Background" Value="{StaticResource ControlMouseOverBackground}" />
-                                    <Setter Property="BorderBrush" Value="LightBlue" />
+                                    <Setter Property="BorderBrush" Value="{StaticResource AccentColour2}" />
                                 </Trigger>
                                 <DataTrigger Binding="{Binding ModelTemplateLayoutView, ElementName=UI}" Value="List">
                                     <Setter Property="Margin" Value="0,0,3,0"/>

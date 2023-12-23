@@ -127,6 +127,7 @@ namespace Amuse.UI.UserControls
                 }
 
                 //TODO: ApplyConfigurationOverrides updates the ModelConfigurations, so clone the item here until fixed
+                SelectedModel.ModelSet.InitBlankTokenArray();
                 var modelSet = SelectedModel.ModelSet with
                 {
                     ModelConfigurations = SelectedModel.ModelSet.ModelConfigurations.Select(x => new OnnxStack.Core.Config.OnnxModelConfig

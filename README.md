@@ -38,3 +38,6 @@ Amuse is not about building or deploying; it's about bringing AI directly into y
 
 ### Text To Image
 https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292651258-dce31659-8863-4f19-a69c-055570a8ead1.mp4
+
+### Image To Image
+https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292651888-91fd55fd-62a4-45dc-8469-ec44b8cea22f.mp4

@@ -35,3 +35,6 @@ Amuse isn't just a tool; it's a gateway to a new realm of AI-enhanced creativity
 - **Real-Time Results:** Witness the magic unfold in real-time as Amuse applies stable diffusion inferences, providing instant feedback and empowering you to make creative decisions on the fly.
 
 Amuse is not about building or deploying; it's about bringing AI directly into your creative process. Elevate your artistic endeavors with Amuse, the AI-augmented companion for visual storytellers and digital artists.
+
+### Text To Image
+https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292651258-dce31659-8863-4f19-a69c-055570a8ead1.mp4

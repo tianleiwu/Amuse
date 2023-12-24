@@ -10,6 +10,7 @@ namespace Amuse.UI.Models
         private string _name;
         private bool _isLoaded;
         private bool _isLoading;
+        private StableDiffusionModelSet _modelSet;
 
         public string Name
         {
@@ -31,7 +32,11 @@ namespace Amuse.UI.Models
             set { _isLoading = value; NotifyPropertyChanged(); }
         }
 
-        public StableDiffusionModelSet ModelSet { get; set; }
+        public StableDiffusionModelSet ModelSet
+        {
+            get { return _modelSet; }
+            set { _modelSet = value; NotifyPropertyChanged(); }
+        }
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

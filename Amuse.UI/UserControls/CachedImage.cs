@@ -10,27 +10,10 @@ namespace Amuse.UI.UserControls
 {
     public class CachedImage : Image
     {
-        private static string _cachePath;
-
         static CachedImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CachedImage), new FrameworkPropertyMetadata(typeof(CachedImage)));
-            _cachePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".cache");
-            if (Directory.Exists(_cachePath))
-                Directory.CreateDirectory(_cachePath);
         }
-
-        public string ImageUrl
-        {
-            get { return (string)GetValue(ImageUrlProperty); }
-            set { SetValue(ImageUrlProperty, value); }
-        }
-        public static readonly DependencyProperty ImageUrlProperty =
-                DependencyProperty.Register("ImageUrl", typeof(string), typeof(CachedImage), new PropertyMetadata(async (s, e) =>
-                {
-                    if (s is CachedImage cachedImage)
-                        await cachedImage.GetOrDownloadImage(e.NewValue as string);
-                }));
 
         public string CacheName
         {
@@ -52,6 +35,22 @@ namespace Amuse.UI.UserControls
                         await cachedImage.GetOrDownloadImage(cachedImage.ImageUrl);
                 }));
 
+        public string ImageUrl
+        {
+            get { return (string)GetValue(ImageUrlProperty); }
+            set { SetValue(ImageUrlProperty, value); }
+        }
+        public static readonly DependencyProperty ImageUrlProperty =
+                DependencyProperty.Register("ImageUrl", typeof(string), typeof(CachedImage), new PropertyMetadata(async (s, e) =>
+                {
+                    if (s is CachedImage cachedImage)
+                        await cachedImage.GetOrDownloadImage(e.NewValue as string);
+                }));
+
+
+
+      
+
 
         /// <summary>
         /// Gets or downloads the image.
@@ -68,7 +67,7 @@ namespace Amuse.UI.UserControls
                 }
 
                 var filename = Path.GetFileName(imageUrl);
-                var directory = Path.Combine(_cachePath, CacheName ?? ".default");
+                var directory = Utils.GetImageCacheDirectory(CacheName ?? ".default", true);
                 var existingImage = Path.Combine(directory, filename);
 
                 Source = File.Exists(existingImage)
@@ -91,7 +90,7 @@ namespace Amuse.UI.UserControls
             var tcs = new TaskCompletionSource<BitmapImage>();
             try
             {
-                using (var fileStream = new FileStream(imageFile, FileMode.Open, FileAccess.Read))
+                         using (var fileStream = new FileStream(imageFile, FileMode.Open, FileAccess.Read))
                 {
                     var bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();

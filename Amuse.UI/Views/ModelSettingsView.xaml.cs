@@ -432,7 +432,7 @@ namespace Amuse.UI.Views
                 && (_modelTemplateFilterTemplateType is null || _modelTemplateFilterTemplateType == template.Template)
                 && (_modelTemplateFilterStatus == ModelTemplateStatusFilter.All
                         || (_modelTemplateFilterStatus == ModelTemplateStatusFilter.Installed && template.IsInstalled && template.IsUserTemplate)
-                        || (_modelTemplateFilterStatus == ModelTemplateStatusFilter.Uninstalled && !template.IsInstalled && template.IsUserTemplate)
+                        || (_modelTemplateFilterStatus == ModelTemplateStatusFilter.NotInstalled && !template.IsInstalled && template.IsUserTemplate)
                         || (_modelTemplateFilterStatus == ModelTemplateStatusFilter.Template && !template.IsUserTemplate));
         }
 
@@ -807,7 +807,7 @@ namespace Amuse.UI.Views
         All = 0,
         Installed = 1,
         Template = 2,
-        Uninstalled = 3
+        NotInstalled = 3
     }
 
 

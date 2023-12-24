@@ -136,14 +136,6 @@
         <!--Left Container-->
         <DockPanel Grid.Column="0">
 
-            <!--Left Container Bottom-->
-            <!--
-            <Border DockPanel.Dock="Bottom" BorderBrush="{StaticResource ContainerBorder}" BorderThickness="1" MinWidth="350" Height="35" Margin="0,5,5,0">
-                <UniformGrid Columns="2">
-                    <Button Content="Add StableDiffusion Model" Command="{Binding AddStableDiffusionModelCommand}"/>
-                    <Button Content="Add Upscale Model" Command="{Binding AddUpscaleModelCommand}" />
-                </UniformGrid>
-            </Border>-->
 
             <!--Left Container Main-->
             <Border  BorderBrush="{StaticResource ContainerBorder}" BorderThickness="1" MinWidth="350" Margin="0,0,5,0"  >
@@ -155,7 +147,6 @@
                             <userControls:FontAwesome Icon="&#xf002;" Size="50"/>
                             <TextBlock Text="Search returned no results..." FontSize="25"/>
                         </StackPanel>
-
                     </DockPanel>
 
                     <DockPanel Visibility="{Binding SelectedModelTemplate, Converter={StaticResource NullVisibilityConverter}}">
@@ -173,92 +164,90 @@
                                     <Border BorderBrush="{StaticResource ContainerBorder}" BorderThickness="0,1,0,0" Margin="10, 5" />
 
                                     <StackPanel Margin="5">
-                                        <Grid>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="54" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
-                                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Pipeline" FontStyle="Italic" FontSize="10" Opacity=".7"/>
-                                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedModelTemplate.Category, Converter={StaticResource EnumDescriptionConverter}}"  Visibility="{Binding SelectedModelTemplate.UpscaleTemplate, Converter={StaticResource NullVisibilityConverter}}" />
-                                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedModelTemplate.StableDiffusionTemplate.PipelineType, Converter={StaticResource EnumDescriptionConverter}}" Visibility="{Binding SelectedModelTemplate.StableDiffusionTemplate, Converter={StaticResource NullVisibilityConverter}}" />
-                                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Repository" FontStyle="Italic" FontSize="10" Opacity=".7"/>
-                                                <TextBlock Grid.Column="1" Grid.Row="2" >
-                                                   <Hyperlink NavigateUri="{Binding SelectedModelTemplate.Repository}" Command="{Binding HyperLinkNavigateCommand}" CommandParameter="{Binding SelectedModelTemplate.Repository}" Foreground="LightBlue" >
-                                                         <TextBlock Style="{x:Null}" Text="{Binding SelectedModelTemplate.Repository}" />
-                                                   </Hyperlink>
-                                                 </TextBlock>
-                                            </Grid>
+                                        <UniformGrid Columns="2">
+                                            <StackPanel>
+                                                <StackPanel>
+                                                    <TextBlock Text="Category" FontStyle="Italic" FontSize="10" Opacity=".7"/>
+                                                    <TextBlock Text="{Binding SelectedModelTemplate.Category, Converter={StaticResource EnumDescriptionConverter}}"  />
+                                                </StackPanel>
 
+                                                <StackPanel Visibility="{Binding SelectedModelTemplate.Website, Converter={StaticResource NullVisibilityConverter}}" Margin="0,2,0,0">
+                                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Website" FontStyle="Italic" FontSize="10" Opacity=".7"/>
+                                                    <TextBlock Margin="0,-3,0,0">
+                                                         <Hyperlink NavigateUri="{Binding SelectedModelTemplate.Website}" Command="{Binding HyperLinkNavigateCommand}" CommandParameter="{Binding SelectedModelTemplate.Repository}" Foreground="LightBlue" >
+                                                            <Run Text="{Binding SelectedModelTemplate.Website}" />
+                                                         </Hyperlink>
+                                                    </TextBlock>
+                                                </StackPanel>
 
-                                            <StackPanel Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Right">
-                                                <Button Command="{Binding ViewModelMetadataCommand}" Margin="2,0" Height="30" Padding="10,0">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <userControls:FontAwesome Icon="&#xf05a;" IconStyle="Light" />
+                                                <StackPanel Visibility="{Binding SelectedModelTemplate.Repository, Converter={StaticResource NullVisibilityConverter}}" Margin="0,2,0,0">
+                                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Repository" FontStyle="Italic" FontSize="10" Opacity=".7"/>
+                                                    <TextBlock Margin="0,-3,0,0" TextTrimming="CharacterEllipsis">
+                                                      <Hyperlink NavigateUri="{Binding SelectedModelTemplate.Repository}" Command="{Binding HyperLinkNavigateCommand}" CommandParameter="{Binding SelectedModelTemplate.Repository}" Foreground="LightBlue" >
+                                                         <Run Text="{Binding SelectedModelTemplate.Repository}" />
+                                                      </Hyperlink>
+                                                    </TextBlock>
+                                                </StackPanel>
+
+                                                <!--StableDiffusionTemplate-->
+                                                <StackPanel Visibility="{Binding SelectedModelTemplate.StableDiffusionTemplate, Converter={StaticResource NullVisibilityConverter}}">
+                                                    <StackPanel Margin="0,2,0,0">
+                                                        <TextBlock Text="Pipeline" FontStyle="Italic" FontSize="10" Opacity=".7"/>
+                                                        <TextBlock Text="{Binding SelectedModelTemplate.StableDiffusionTemplate.PipelineType, Converter={StaticResource EnumDescriptionConverter}}"  />
                                                     </StackPanel>
-                                                </Button>
+                                                </StackPanel>
+
                                             </StackPanel>
-                                        </Grid>
 
+                                            <Grid>
 
-                                        <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.StableDiffusionTemplate, Converter={StaticResource NullVisibilityConverter}}">
-                                            <ItemsControl ItemsSource="{Binding SelectedModelTemplate.StableDiffusionTemplate.DiffuserTypes}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
+                                                <StackPanel Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Right" Margin="0,0,6,0">
+                                                    <Button Command="{Binding ViewModelMetadataCommand}" Margin="2,0" Height="22" Padding="10,0" >
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <userControls:FontAwesome Icon="&#xf05a;" IconStyle="Light" Size="12" />
+                                                            <TextBlock Text="Info" Margin="3,0,0,0"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </StackPanel>
+
+                                                <StackPanel>
+
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Supported Features:" FontStyle="Italic" FontSize="10" Opacity=".7"/>
+
+                                                    <!--Template Details StableDiffusionTemplate-->
+                                                    <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.StableDiffusionTemplate, Converter={StaticResource NullVisibilityConverter}}">
+                                                        <ItemsControl ItemsSource="{Binding SelectedModelTemplate.StableDiffusionTemplate.DiffuserTypes}">
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                                                        <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
+                                                                        <TextBlock Text="{Binding Converter={StaticResource EnumDescriptionConverter}}" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Vertical" IsItemsHost="True" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                        </ItemsControl>
+                                                    </StackPanel>
+
+                                                    <!--Template Details UpscaleTemplate-->
+                                                    <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.UpscaleTemplate, Converter={StaticResource NullVisibilityConverter}}">
                                                         <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
                                                             <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
-                                                            <TextBlock Text="{Binding Converter={StaticResource EnumDescriptionConverter}}" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
+                                                            <TextBlock Text="Image Upscale" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
                                                         </StackPanel>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" IsItemsHost="True" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
-                                        </StackPanel>
+                                                    </StackPanel>
 
-                                        <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.UpscaleTemplate, Converter={StaticResource NullVisibilityConverter}}">
-                                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
-                                                <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
-                                                <TextBlock Text="{Binding SelectedModelTemplate.Category, Converter={StaticResource EnumDescriptionConverter}}" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
-                                            </StackPanel>
-                                        </StackPanel>
-
-                                    </StackPanel>
-
-                                    <StackPanel Visibility="{Binding SelectedModelTemplate.IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="3,10,3,3" >
-                                        <UniformGrid Columns="3" Height="30">
-                                            <Button Command="{Binding UpdateModelCommand}" Margin="2,0" >
-                                                <StackPanel Orientation="Horizontal">
-                                                    <userControls:FontAwesome Icon="&#xf085;" IconStyle="Light" />
-                                                    <TextBlock Text="Settings" Margin="5,0,0,0"/>
                                                 </StackPanel>
-                                            </Button>
-                                            <Button Command="{Binding UpdateModelAdvancedCommand}" Margin="2,0">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <userControls:FontAwesome Icon="&#xf7d9;" IconStyle="Light" />
-                                                    <TextBlock Text="Advanced" Margin="5,0,0,0"/>
-                                                </StackPanel>
-                                            </Button>
-                                            <Button Command="{Binding UpdateModelMetadataCommand}" Margin="2,0">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <userControls:FontAwesome Icon="&#xf05a;" IconStyle="Light" />
-                                                    <TextBlock Text="Metadata" Margin="5,0,0,0"/>
-                                                </StackPanel>
-                                            </Button>
+                                            </Grid>
                                         </UniformGrid>
                                     </StackPanel>
 
-
-
                                 </StackPanel>
+
                             </DockPanel>
                         </StackPanel>
 
@@ -268,7 +257,7 @@
                             <!--Install Options-->
                             <StackPanel Margin="5" >
 
-                                <TextBlock Text="Installation" FontSize="16" FontWeight="DemiBold"/>
+                                <TextBlock Text="Installation" FontSize="16" FontWeight="DemiBold" Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                                 <!--Installed Model-->
                                 <StackPanel Visibility="{Binding SelectedModelTemplate.IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -294,23 +283,6 @@
                                 <!--Uninstalled Model-->
                                 <StackPanel Visibility="{Binding SelectedModelTemplate.IsInstalled, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
 
-                                    <!--Template Model-->
-                                    <StackPanel Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="200" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="40" />
-                                            </Grid.RowDefinitions>
-
-                                            <Button Grid.Column="0" Grid.Row="0" Content="Install Model" Command="{Binding InstallModelCommand}" />
-                                            <TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" FontStyle="Italic" FontSize="11" Margin="5,0" Text="{Binding SelectedModelTemplate.Template, StringFormat={}Install a {0} based model you have already downloaded and saved}" />
-
-                                        </Grid>
-                                    </StackPanel>
-
                                     <StackPanel Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <Grid IsEnabled="{Binding SelectedModelTemplate.IsDownloading, Converter={StaticResource InverseBoolConverter}}" >
                                             <Grid.ColumnDefinitions>
@@ -335,7 +307,6 @@
 
                                             <Button Grid.Column="0" Grid.Row="3" Content="Remove Model Template" Command="{Binding RemoveModelCommand}" />
                                             <TextBlock Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" FontStyle="Italic" FontSize="11" Margin="5,0" Text="Removes the Model template from the application, no files are deleted" />
-
                                         </Grid>
 
                                         <StackPanel>
@@ -399,7 +370,50 @@
 
                         </StackPanel>
 
-                        <TextBlock />
+                        <!--Selected Model Center Panel-->
+                        <Grid>
+
+                            <!--Template-->
+                            <DockPanel Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}" >
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Grid.Column="0" Grid.Row="0"  Command="{Binding InstallModelCommand}" Height="40" Style="{StaticResource SuccessButtonStyle}" >
+                                        <TextBlock Text="{Binding SelectedModelTemplate.Template, StringFormat={}Install {0} Model}" />
+                                    </Button>
+                                    <TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" FontStyle="Italic" FontSize="11" Margin="5,0" Text="{Binding SelectedModelTemplate.Template, StringFormat={}Install a {0} based model you have already downloaded and saved}" />
+                                </StackPanel>
+                            </DockPanel>
+
+                            <!--IsInstalled Template-->
+                            <DockPanel Visibility="{Binding SelectedModelTemplate.IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <StackPanel Margin="10">
+                                    <UniformGrid DockPanel.Dock="Top" Columns="3" Height="30">
+                                        <Button Command="{Binding UpdateModelCommand}" Margin="2,0" >
+                                            <StackPanel Orientation="Horizontal">
+                                                <userControls:FontAwesome Icon="&#xf085;" IconStyle="Light" />
+                                                <TextBlock Text="Settings" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button Command="{Binding UpdateModelAdvancedCommand}" Margin="2,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <userControls:FontAwesome Icon="&#xf7d9;" IconStyle="Light" />
+                                                <TextBlock Text="Advanced" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Button Command="{Binding UpdateModelMetadataCommand}" Margin="2,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <userControls:FontAwesome Icon="&#xf570;" IconStyle="Light" />
+                                                <TextBlock Text="Metadata" Margin="5,0,0,0"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </UniformGrid>
+                                </StackPanel>
+
+                            </DockPanel>
+
+                            <!--NotInstalled Template-->
+                            <DockPanel Visibility="{Binding SelectedModelTemplate.IsInstalled, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                            </DockPanel>
+                        </Grid>
 
                     </DockPanel>
                 </Grid>
@@ -612,7 +626,6 @@
                             </Style.Triggers>
                         </Style>
                     </ListBox.ItemContainerStyle>
-
 
                 </ListBox>
             </Border>

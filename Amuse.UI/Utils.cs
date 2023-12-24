@@ -16,6 +16,22 @@ namespace Amuse.UI
 {
     public static class Utils
     {
+        public static string GetImageCacheDirectory(string subDirectory = null, bool createSubDirectory = false)
+        {
+            var cachePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".cache");
+            if (!Directory.Exists(cachePath))
+                Directory.CreateDirectory(cachePath);
+
+            if (string.IsNullOrEmpty(subDirectory))
+                return cachePath;
+
+            cachePath = Path.Combine(cachePath, subDirectory);
+            if(createSubDirectory && !Directory.Exists(cachePath))
+                Directory.CreateDirectory(cachePath);
+
+            return cachePath;
+        }
+
         public static string RandomString()
         {
             return Path.GetFileNameWithoutExtension(Path.GetRandomFileName());

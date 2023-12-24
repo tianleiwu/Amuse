@@ -126,6 +126,8 @@
         <SolidColorBrush x:Key="AccentColour1" Color="#FF0d72ba" />
         <SolidColorBrush x:Key="AccentColour2" Color="#FF74b768" />
 
+       
+
 
         <!-- Window Colours. Background, Border and TitleBar colours. -->
         <SolidColorBrush x:Key="BackgroundColour" Color="#FF232323"/>
@@ -425,8 +427,8 @@
             <GradientStop Color="#FF2A2A2A" Offset="1.0"/>
         </LinearGradientBrush>
         <SolidColorBrush x:Key="ButtonForeground" Color="#FFC8C8C8"/>
-        <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF323232"/>
-        <SolidColorBrush x:Key="ButtonBorderDefault" Color="#FF323232"/>
+        <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF4e4d4d"/>
+        <SolidColorBrush x:Key="ButtonBorderDefault" Color="#FF4e4d4d"/>
         <SolidColorBrush x:Key="ButtonBorderMouseOver" Color="#FF3296FA"/>
         <SolidColorBrush x:Key="ButtonBackgroundMouseOver" Color="#FF424242"/>
         <SolidColorBrush x:Key="ButtonBorderPressed" Color="#FF3296FA"/>
@@ -2062,6 +2064,41 @@
             </Style.Triggers>
         </Style>
 
+
+        <!--Accents-->
+        <SolidColorBrush x:Key="InfoColour" Color="#FF2e90d7" />
+        <SolidColorBrush x:Key="SuccessColour" Color="#FF8ed781" />
+        <SolidColorBrush x:Key="WarningColour" Color="#ffffcc00" />
+        <SolidColorBrush x:Key="DangerColour" Color="#fffe2929" />
+
+
+        <!--Button-->
+        <Style x:Key="InfoButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BorderBrush" Value="{StaticResource InfoColour}" />
+        </Style>
+        <Style x:Key="SuccessButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BorderBrush" Value="{StaticResource SuccessColour}" />
+        </Style>
+        <Style x:Key="WarningButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BorderBrush" Value="{StaticResource WarningColour}" />
+        </Style> 
+        <Style x:Key="DangerButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Foreground" Value="{StaticResource DangerColour}" />
+        </Style>
+
+        <!--TextBlock-->
+        <Style x:Key="InfoTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground" Value="{StaticResource InfoColour}" />
+        </Style>
+        <Style x:Key="SuccessTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground" Value="{StaticResource SuccessColour}" />
+        </Style>
+        <Style x:Key="WarningTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground" Value="{StaticResource WarningColour}" />
+        </Style>
+        <Style x:Key="DangerTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground" Value="{StaticResource DangerColour}" />
+        </Style>
 
     </Application.Resources>
 </Application>

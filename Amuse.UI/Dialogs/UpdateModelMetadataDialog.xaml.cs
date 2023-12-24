@@ -3,8 +3,10 @@ using Amuse.UI.Models;
 using Amuse.UI.Views;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -111,7 +113,7 @@ namespace Amuse.UI.Dialogs
             IconImage = _modelTemplate.ImageIcon;
             Repository = _modelTemplate.Repository;
             RepositoryBranch = _modelTemplate.RepositoryBranch;
-           
+
             for (int i = 0; i < 4; i++)
             {
                 PreviewImages.Add(_modelTemplate.PreviewImages?.ElementAtOrDefault(i));
@@ -129,12 +131,40 @@ namespace Amuse.UI.Dialogs
             // validate links;
             _modelTemplate.Website = Website;
             _modelTemplate.Author = Author;
-            _modelTemplate.ImageIcon = IconImage;
             _modelTemplate.Description = Description;
             _modelTemplate.Repository = Repository;
             _modelTemplate.RepositoryBranch = RepositoryBranch;
-            _modelTemplate.PreviewImages = PreviewImages.Where(x => !string.IsNullOrEmpty(x)).ToList();
             _modelTemplate.RepositoryFiles = RepositoryFiles.Where(x => !string.IsNullOrEmpty(x)).ToList();
+            _modelTemplate.ImageIcon = IconImage;
+            _modelTemplate.PreviewImages = PreviewImages.ToList();
+
+            var directory = Utils.GetImageCacheDirectory(_modelTemplate.Name, true);
+            if (File.Exists(_modelTemplate.ImageIcon))
+            {
+                var destination = Path.Combine(directory, "Logo.png");
+                if (!destination.Equals(_modelTemplate.ImageIcon))
+                {
+                    File.Copy(_modelTemplate.ImageIcon, destination, true);
+                    _modelTemplate.ImageIcon = destination;
+                }
+            }
+
+            for (int i = 0; i < PreviewImages.Count; i++)
+            {
+                if (string.IsNullOrEmpty(PreviewImages[i]))
+                    continue;
+
+                if (File.Exists(PreviewImages[i]))
+                {
+                    var destination = Path.Combine(directory, $"Preview{i + 1}.png");
+                    if (!destination.Equals(PreviewImages[i]))
+                    {
+                        File.Copy(PreviewImages[i], destination, true);
+                        _modelTemplate.PreviewImages[i] = destination;
+                    }
+                }
+            }
+
 
             DialogResult = true;
             return Task.CompletedTask;

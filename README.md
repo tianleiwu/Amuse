@@ -41,3 +41,6 @@ https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292651258-
 
 ### Image To Image
 https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292651888-91fd55fd-62a4-45dc-8469-ec44b8cea22f.mp4
+
+### Image Inpaint
+https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292652258-c6ffbb17-98d2-483a-9eab-04e4dfad1102.mp4

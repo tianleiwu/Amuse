@@ -6,9 +6,9 @@
 
 # Welcome to Amuse!
 
-**Amuse: OnnxStack Windows UI Implementation**
+Amuse is a professional and intuitive Windows UI for harnessing the capabilities of the ONNX (Open Neural Network Exchange) platform, allowing you to easily augment and enhance your creativity with the power of AI.
 
-Amuse is a sophisticated Windows user interface implementation built on top of the powerful OnnxStack repository.
+Amuse is written entirely in .NET and does not require complicated dependencies like Python.
 
 ## Features
 
@@ -22,9 +22,7 @@ Amuse is a sophisticated Windows user interface implementation built on top of t
 
 ## Why Choose Amuse?
 
-Amuse provides a professional and intuitive Windows UI for harnessing the capabilities of OnnxStack. Enjoy a Python-free AI integration experience, allowing you to easily augment and enhance your creativity with the power of AI.
-
-Amuse isn't just a tool; it's a gateway to a new realm of AI-enhanced creativity. Unlike traditional machine learning frameworks, Amuse is tailored for artistic expression and visual transformation. This Windows UI brings the power of OnnxStack to your fingertips, offering a unique experience in crafting AI-generated art.
+Amuse isn't just a tool; it's a gateway to a new realm of AI-enhanced creativity. Unlike traditional machine learning frameworks, Amuse is tailored for artistic expression and visual transformation. This Windows UI brings the power of AI to your fingertips, offering a unique experience in crafting AI-generated art.
 
 ### Key Highlights
 
@@ -47,3 +45,9 @@ https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292652258-
 
 ### Paint To Image
 https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292652901-f5faabdf-78c7-4d26-baeb-04ed3a542d9f.mp4
+
+
+## Reference
+Onnx Stable Diffusion in .NET [OnnxStack](https://github.com/saddam213/OnnxStack)
+
+LLama Text Generation in .NET [LLamaStack](https://github.com/saddam213/LLamaStack)

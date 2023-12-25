@@ -1,5 +1,4 @@
 ﻿using Amuse.UI.Models;
-using Amuse.UI.Views;
 using OnnxStack.Core.Config;
 using OnnxStack.StableDiffusion.Config;
 using OnnxStack.StableDiffusion.Enums;
@@ -135,6 +134,11 @@ namespace Amuse.UI.Services
                 Channels = 3,
                 SampleSize = modelTemplate.SampleSize,
                 ScaleFactor = modelTemplate.ScaleFactor,
+                ExecutionProvider = _settings.DefaultExecutionProvider,
+                DeviceId = _settings.DefaultDeviceId,
+                ExecutionMode = _settings.DefaultExecutionMode,
+                InterOpNumThreads = _settings.DefaultInterOpNumThreads,
+                IntraOpNumThreads = _settings.DefaultIntraOpNumThreads,
                 ModelConfigurations = new List<OnnxModelConfig> { new OnnxModelConfig { Type = OnnxModelType.Upscaler, OnnxModelPath = filename } }
             };
         }

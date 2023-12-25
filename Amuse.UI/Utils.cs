@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -16,6 +17,12 @@ namespace Amuse.UI
 {
     public static class Utils
     {
+        public static string GetAppVersion()
+        {
+            var version = Assembly.GetEntryAssembly().GetName().Version;
+            return $"v{version.Major}.{version.Minor}.{version.Build}";
+        }
+
         public static string GetImageCacheDirectory(string subDirectory = null, bool createSubDirectory = false)
         {
             var cachePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".cache");
@@ -26,7 +33,7 @@ namespace Amuse.UI
                 return cachePath;
 
             cachePath = Path.Combine(cachePath, subDirectory);
-            if(createSubDirectory && !Directory.Exists(cachePath))
+            if (createSubDirectory && !Directory.Exists(cachePath))
                 Directory.CreateDirectory(cachePath);
 
             return cachePath;

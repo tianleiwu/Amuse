@@ -40,6 +40,8 @@ namespace Amuse.UI
             WindowMinimizeCommand = new AsyncRelayCommand(WindowMinimize);
             WindowMaximizeCommand = new AsyncRelayCommand(WindowMaximize);
             InitializeComponent();
+            Title = $"Amuse - {Utils.GetAppVersion()}";
+            _logger.LogInformation($"Amuse {Utils.GetAppVersion()} successfully started.");
         }
 
 

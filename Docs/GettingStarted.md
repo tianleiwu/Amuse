@@ -74,7 +74,9 @@ Set the number of IntraOp threads, a more granular setting across devices for pa
 Click the "Save Changes" button to save any modifications made to the settings. This ensures that the updated configurations are applied and retained for future use.
 
 ## Model Page
-* explain + screenshots
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/103fb3f4-db43-426d-a450-1ab456e42c70)
+
+The "Models" page serves as the central hub for managing the various models within the application. Users can download specific models or use templates to install predefined types of models. This page provides a convenient interface for users to access, organize, and install the models they need for various tasks.
 
 ## Install/Download Model
 * explain + screenshots

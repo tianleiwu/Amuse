@@ -17,7 +17,7 @@ Installer
 ### Model Settings
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/2d7b9ab1-dc93-4dac-b4a7-286f048955cb)
 
-### Cache Mode
+#### Cache Mode
 
 The "Cache Mode" setting allows you to control how models are loaded and managed within the application. Choose between "Single" and "Multiple" options from the drop-down menu.
 

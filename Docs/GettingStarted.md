@@ -12,10 +12,10 @@ Installer
 * installer, run
 
 ## Settings Page
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/d350f3c0-80ad-4d57-a4af-2f0e8d85a3b8)
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/b2e941da-977d-450c-aabc-bc56b5f8e7de)
 
 ### Model Settings
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/2d7b9ab1-dc93-4dac-b4a7-286f048955cb)
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/84668335-0b07-49b5-b9bb-868919368c13)
 
 #### Cache Mode
 

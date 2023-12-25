@@ -12,7 +12,22 @@ Installer
 * installer, run
 
 ## Settings Page
-* explain + screenshots
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/d350f3c0-80ad-4d57-a4af-2f0e8d85a3b8)
+
+### Model Settings
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/2d7b9ab1-dc93-4dac-b4a7-286f048955cb)
+
+### Cache Mode
+
+The "Cache Mode" setting allows you to control how models are loaded and managed within the application. Choose between "Single" and "Multiple" options from the drop-down menu.
+
+##### Single:
+
+Selecting "Single" restricts the application to load only one model at a time. If you load another model, it will automatically unload the previously loaded one. This setting is ideal when working with one model at a time and requires a sequential model loading approach.
+
+##### Multiple:
+
+Opting for "Multiple" enables concurrent loading of multiple models, significantly improving the efficiency of switching between them. However, it's important to note that loading too many models simultaneously may surpass the hardware limitations of the user's system. In this mode, users are responsible for manually unloading models to avoid exceeding hardware constraints. Exercise caution and awareness to ensure optimal performance and resource utilization.
 
 ## Model Page
 * explain + screenshots

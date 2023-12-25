@@ -1,5 +1,5 @@
 ﻿using Amuse.UI.Commands;
-using Amuse.UI.Views;
+using Amuse.UI.Models;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

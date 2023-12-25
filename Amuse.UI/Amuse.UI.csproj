@@ -9,6 +9,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <PlatformTarget>x64</PlatformTarget>
     <Configurations>Debug;Release;Debug-DML;Debug-Cuda;Release-DML;Release-Cuda;Debug-TensorRT;Release-TensorRT</Configurations>
+    <ApplicationIcon>Images\Icon.ico</ApplicationIcon>
+    <AssemblyName>Amuse</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

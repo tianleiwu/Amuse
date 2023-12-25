@@ -1,7 +1,6 @@
 ﻿using Amuse.UI.Commands;
 using Amuse.UI.Models;
 using Amuse.UI.Services;
-using Amuse.UI.Views;
 using Microsoft.Extensions.Logging;
 using OnnxStack.StableDiffusion.Config;
 using System;

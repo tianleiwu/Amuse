@@ -41,6 +41,12 @@ Enable this option to automatically save blueprints for the generated images. Th
 #### Auto-Save Directory
 If "Auto-Save Images" is enabled, specify the auto-save directory where generated images and blueprints will be saved. You can either manually type the desired directory into the text box or use the "Browse" button to navigate to the desired directory in the explorer.
 
+#### Realtime Refresh Rate (ms)
+Set the refresh rate (in milliseconds) when "Live Update" is enabled during image generation.
+
+##### Enable History
+Enable this option to show all Live Update changes in the history. Note that "Live Update" generates many images and enabling history may result in cluttering the history with frequent updates.
+
 ### Execution Defaults
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/52b96d87-2949-4c9b-a02a-06f84d82965a)
 

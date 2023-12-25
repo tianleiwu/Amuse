@@ -41,6 +41,32 @@ Enable this option to automatically save blueprints for the generated images. Th
 #### Auto-Save Directory
 If "Auto-Save Images" is enabled, specify the auto-save directory where generated images and blueprints will be saved. You can either manually type the desired directory into the text box or use the "Browse" button to navigate to the desired directory in the explorer.
 
+### Execution Defaults
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/52b96d87-2949-4c9b-a02a-06f84d82965a)
+
+#### Provider
+Select the preferred device for execution from the available options.
+
+#### Mode
+Choose between ORT_Sequential and ORT_Parallel. ORT_Sequential processes operations sequentially, while ORT_Parallel allows for simultaneous processing of multiple operations. The choice can impact the speed and efficiency of model inference based on the model characteristics and hardware.
+
+#### DeviceId
+Enter the ID of the desired device for execution. Set to 0 for automatic selection.
+
+#### InterOp Threads
+Set the number of InterOp threads responsible for managing parallel execution of the graph across nodes. This is an advanced setting rarely needing adjustment.
+
+#### IntraOp Threads
+Set the number of IntraOp threads, a more granular setting across devices for parallel execution. This is an advanced setting rarely needing adjustment.
+
+**Note:** These default settings apply only to new models during installation. Changing these settings will not impact already installed models. To modify these settings for existing models, adjustments must be made in the individual model settings.
+
+### Save Settings
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/87c109ec-e276-4533-ba22-64c378820a7f)
+
+#### Save Changes
+Click the "Save Changes" button to save any modifications made to the settings. This ensures that the updated configurations are applied and retained for future use.
+
 ## Model Page
 * explain + screenshots
 

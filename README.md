@@ -1,6 +1,6 @@
 <p align="center" width="100%">
-    <img width="80%" src="Assets/Amuse-Logo-512.png">
-</p>
+    <img width="40%" src="Assets/Amuse-Logo-512.png">
+</p> 
 
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Stackyard-AI/Amuse)
 

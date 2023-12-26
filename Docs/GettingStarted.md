@@ -18,15 +18,12 @@ Installer
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/84668335-0b07-49b5-b9bb-868919368c13)
 
 #### Cache Mode
-
 The "Cache Mode" setting allows you to control how models are loaded and managed within the application. Choose between "Single" and "Multiple" options from the drop-down menu.
 
 ##### Single:
-
 Selecting "Single" restricts the application to load only one model at a time. If you load another model, it will automatically unload the previously loaded one. This setting is ideal when working with one model at a time and requires a sequential model loading approach.
 
 ##### Multiple:
-
 Opting for "Multiple" enables concurrent loading of multiple models, significantly improving the efficiency of switching between them. However, it's important to note that loading too many models simultaneously may surpass the hardware limitations of the user's system. In this mode, users are responsible for manually unloading models to avoid exceeding hardware constraints. Exercise caution and awareness to ensure optimal performance and resource utilization.
 
 ### Image Settings
@@ -79,6 +76,40 @@ Click the "Save Changes" button to save any modifications made to the settings. 
 The "Models" page serves as the central hub for managing the various models within the application. Users can download specific models or use templates to install predefined types of models. This page provides a convenient interface for users to access, organize, and install the models they need for various tasks.
 
 ## Install/Download Model
+
+### Models and Model Templates
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/c1c3d874-4978-43b2-8995-326bd58cdbc8)
+
+#### Prepopulated Models
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e297c214-a99d-48f0-a4c8-55477aa4b7a3)
+
+The models featured on the Models page constitute a curated selection of pre-configured models that have undergone thorough testing with Amuse, ensuring their reliable performance. These models are known to work seamlessly within the application.
+
+#### Model Templates
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/538b0bc9-2309-4849-a8f3-def8684ec795)
+
+In addition to individual models, the Models page includes Model Templates. These templates are pre-configured for various model types, offering a convenient way to install other downloaded models. Each Model Template is carefully designed to simplify the installation process and enhance the user experience.
+
+### Install Model
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/1478546f-0cb1-4efd-baae-12c5ef1a3f62)
+
+#### Install Model
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/1d1819c9-a945-423a-acfc-78d978920417)
+
+If you have already downloaded one of the models prepopulated in the models page, this button will let you point to the directory you have that model in to install it.
+
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/228862c4-3331-4705-b0ee-5ea1b40f47fd)
+
+#### Download Model
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/116b3e96-ccba-43d8-987e-e915570cc9e5)
+
+This button will let you choose where to save the model and then download and install it. This button will only download the files needed to run Amuse and ignore everything else, which allows for a faster download in many cases.
+
+#### Clone Model Repository
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/78367c0d-dabe-4705-88a6-caef960d3f52)
+
+his button will let you choose where to save the model and then download and install it. This button downloads every file in the model repository including files Amuse does not need to be able to run, which can result in longer download times in many cases.
+
 * explain + screenshots
 * explain templates
 * install local model

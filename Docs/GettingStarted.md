@@ -88,6 +88,55 @@ The "Models" page serves as the central hub for managing the various models with
 * remove model
 
 ## Text To Image
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/33308b1f-d7e6-4044-a03e-80e65680a7c1)
+
+### Load Model
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/4a6b0f1f-3b68-4bd8-8ae7-cbe30377ceeb)
+
+Dropdown contains installed models, selecting a model will reveal a Load button, allowing the selected model to be loaded.
+
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e7ada531-71e7-465d-8504-2d6e594d4d01)
+
+### Prompt
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/aad4144d-86b0-4a12-bffa-f9ad21da533b)
+
+A prompt serves as a specific instruction or input provided to guide the diffusion process. It influences the way information or signals spread across a stable diffusion system, shaping the direction and nature of the diffusion. The prompt plays a crucial role in determining the outcome or behavior of the diffusion process within the stable diffusion system.
+
+### Negative Prompt
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/317d20ce-6e07-4b04-bd2f-70ab095a0c07)
+
+A negative prompt serves as a specific input or instruction to inhibit or constrain the diffusion process. Instead of guiding the spread of information or signals, negative prompts restrict or counteract certain aspects, influencing the system in a way that opposes or limits the usual diffusion dynamics. These prompts play a critical role in shaping the outcome by introducing constraints or inhibitory factors into the stable diffusion process.
+
+### Scheduler Options
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/b5387af7-a542-4f83-859b-d1f4e067cc4b)
+
+There are several options that impact the resulting images generated.
+
+#### Scheduler
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/d7297246-afca-4f2a-aeac-73691780fd0e)
+
+A scheduler is responsible for managing and controlling the timing and order of events or processes. It determines when and in what sequence various tasks or actions should occur within the system. The scheduler plays a crucial role in coordinating the execution of different elements, ensuring a well-organized and efficient operation of the overall system. It helps optimize resource utilization, prioritize tasks, and maintain stability in the diffusion process by controlling the timing and sequence of events. The available schedulers will vary depending on the model being used.
+
+#### Live Update
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/dd3cbbf8-72eb-4bd5-ad2c-1639bf0f2aea)
+
+Enabling Live Update will cause images to be constantly generated in real time as changes to the settings are made, otherwise images will only be generated one at a time when the Generate button is clicked manually.
+
+#### Seed
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/c1726c03-2bde-40bd-9213-4b695c19c789)
+
+A seed is a starting point for generating random numbers. The seed is an initial value that serves as the input for a random number generator algorithm. When you use the same seed in different simulations or runs, you ensure that the random numbers generated are reproducible. Using a seed of 0 will result in a random seed each time.
+
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/4f52b280-d42b-4731-9db3-f868187612a1)
+
+This button will choose a seed at random.
+
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/69fb8765-487e-40b3-906d-14c2165d2ab3)
+
+This button will change the seed back to 0.
+
+
+
 * explain + screenshots
 * prompt area
 * scheduler options

@@ -127,13 +127,9 @@ Enabling Live Update will cause images to be constantly generated in real time a
 
 A seed is a starting point for generating random numbers. The seed is an initial value that serves as the input for a random number generator algorithm. When you use the same seed in different simulations or runs, you ensure that the random numbers generated are reproducible. Using a seed of 0 will result in a random seed each time.
 
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/4f52b280-d42b-4731-9db3-f868187612a1)
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/4f52b280-d42b-4731-9db3-f868187612a1) This button will choose a seed at random.
 
-This button will choose a seed at random.
-
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/69fb8765-487e-40b3-906d-14c2165d2ab3)
-
-This button will change the seed back to 0.
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/69fb8765-487e-40b3-906d-14c2165d2ab3) This button will change the seed back to 0.
 
 
 

@@ -363,7 +363,7 @@ namespace Amuse.UI.Views
                 while (!_cancelationTokenSource.IsCancellationRequested)
                 {
                     var refreshTimestamp = Stopwatch.GetTimestamp();
-                    if (SchedulerOptions.HasChanged || PromptOptions.HasChanged || HasCanvasChanged)
+                    if (SchedulerOptions.HasChanged || PromptOptions.HasChanged || HasCanvasChanged || SchedulerOptions.Seed == 0)
                     {
                         HasCanvasChanged = false;
                         PromptOptions.HasChanged = false;

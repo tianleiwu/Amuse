@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-    <img width="40%" src="Assets/Amuse-Logo-512.png">
+    <img width="50%" src="Assets/Amuse-Logo-512.png">
 </p> 
 
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Stackyard-AI/Amuse)
@@ -21,7 +21,8 @@ __________________________
 - **Image To Image:** Transform images seamlessly using advanced machine learning models.
   
 - **Image Inpaint:** Effortlessly fill in missing or damaged parts of images with intelligent inpainting.
-  
+
+- **Model Management:** Install, download and manage all your models in a simple user interafce.
 
 __________________________
 
@@ -102,6 +103,11 @@ RTX 3090 | [LCM_Dreamshaper_v7_Olive_Onnx](https://huggingface.co/softwareweaver
 
 __________________________
 
+
+## Contribution
+We welcome contributions to Amuse! If you have any ideas, bug reports, or improvements, feel free to open an issue or submit a pull request.
+
+__________________________
 
 ## Reference
 OnnxRuntime - [OnnxRuntime](https://onnxruntime.ai/)

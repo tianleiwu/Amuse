@@ -108,15 +108,25 @@ This button will let you choose where to save the model and then download and in
 #### Clone Model Repository
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/78367c0d-dabe-4705-88a6-caef960d3f52)
 
-his button will let you choose where to save the model and then download and install it. This button downloads every file in the model repository including files Amuse does not need to be able to run, which can result in longer download times in many cases.
+This button will let you choose where to save the model and then download and install it. This button downloads every file in the model repository including files Amuse does not need to be able to run, which can result in longer download times in many cases.
 
-* explain + screenshots
-* explain templates
-* install local model
-* download model
-* clone model
-* unistall model
-* remove model
+### Install Model Template
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/247bf079-1db8-4a8e-b834-6642b4174f9a)
+
+### Install Model
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/ac75035b-1e24-452a-be78-4a07574586f5)
+
+If you have already downloaded a model supported by one of the model templates prepopulated in the models page, this button will let you point to the directory you have that model in to install it.
+
+### Uninstall Model
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/af18dbcf-2f80-4108-86d3-791b0b00a2ca)
+
+This button will uninstall the model. The model template will not be removed, and the model files will not be deleted, this allows the model to easily be reinstalled.
+
+### Remove Template
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/fa5babdb-8178-482d-a4ca-76cf877f6f7b)
+
+This button will uninstall the model and remove the template from Amuse. The model files will not be deleted.
 
 ## Text To Image
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/33308b1f-d7e6-4044-a03e-80e65680a7c1)

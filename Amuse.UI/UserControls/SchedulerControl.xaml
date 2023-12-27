@@ -15,6 +15,7 @@
         </Style>
     </UserControl.Resources>
     <DockPanel DataContext="{Binding ElementName=UI}">
+
         <TabControl DockPanel.Dock="Top">
 
             <!--Basic-->
@@ -112,9 +113,6 @@
                                                     <Setter Property="IsEnabled" Value="False" />
                                                 </MultiDataTrigger.Setters>
                                             </MultiDataTrigger>
-                                            <DataTrigger Binding="{Binding BatchOptions.IsAutomationEnabled}" Value="True">
-                                                <Setter Property="IsEnabled" Value="False" />
-                                            </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </StackPanel.Style>
@@ -357,7 +355,7 @@
                     </UniformGrid>
 
                     <UniformGrid Columns="3">
-                        <StackPanel Visibility="{Binding SelectedModel.ModelOptions.PipelineType, Converter={StaticResource PipelineVisibilityConverter}, ConverterParameter=LatentConsistency}">
+                        <StackPanel Visibility="{Binding SelectedModel.ModelSet.PipelineType, Converter={StaticResource PipelineVisibilityConverter}, ConverterParameter=LatentConsistency}">
                             <Label>Original Timesteps</Label>
                             <TextBox Text="{Binding SchedulerOptions.OriginalInferenceSteps}"/>
                         </StackPanel>
@@ -378,28 +376,40 @@
             </TabItem>
 
             <!--Automation-->
-            <TabItem IsEnabled="{Binding BatchOptions.IsRealtimeEnabled, Converter={StaticResource InverseBoolConverter}}">
+            <TabItem IsEnabled="{Binding BatchOptions.IsRealtimeEnabled, Converter={StaticResource InverseBoolConverter}}" IsSelected="{Binding BatchOptions.IsAutomationEnabled}">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <userControls:FontAwesome Icon="&#xf544;" IconStyle="Light"/>
                         <TextBlock Text="Automation" Margin="5,0,0,0"/>
                     </StackPanel>
                 </TabItem.Header>
-                <StackPanel Margin="5" IsEnabled="{Binding IsAutomationEnabled}">
+                <StackPanel Margin="5" >
 
-                    <CheckBox Content="Enable Automation" IsChecked="{Binding BatchOptions.IsAutomationEnabled}" Margin="0,10,0,0"/>
-
-                    <StackPanel IsEnabled="{Binding BatchOptions.IsAutomationEnabled}">
-
+                    <StackPanel>
                         <StackPanel>
                             <Label>Automation Type</Label>
                             <UniformGrid Columns="2">
-                                <ComboBox ItemsSource="{Binding Source={StaticResource BatchOptionType}}" SelectedItem="{Binding BatchOptions.BatchType}"/>
-                                <CheckBox Content="Disable History" IsChecked="{Binding BatchOptions.DisableHistory}" IsEnabled="{Binding BatchOptions.IsAutomationEnabled}" HorizontalAlignment="Right" />
+                                <ComboBox ItemsSource="{Binding Source={StaticResource BatchOptionType}}" SelectedItem="{Binding BatchOptions.BatchType}">
+                                    <ComboBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding}" Value="Strength" />
+                                                        <Condition Binding="{Binding DiffuserType, ElementName=UI}" Value="TextToImage" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <MultiDataTrigger.Setters>
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </MultiDataTrigger.Setters>
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ComboBox.ItemContainerStyle>
+                                </ComboBox>
+                                <CheckBox Content="Disable History" IsChecked="{Binding BatchOptions.DisableHistory}" HorizontalAlignment="Right" />
                             </UniformGrid>
-
                         </StackPanel>
-
 
                         <!--Seed-->
                         <StackPanel Margin="0,10">

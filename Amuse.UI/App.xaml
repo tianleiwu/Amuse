@@ -2045,6 +2045,11 @@
             </Setter>
         </Style>
 
+        <Style  TargetType="{x:Type ToolTip}">
+            <Setter Property="Padding" Value="10, 4" />
+            <Setter Property="Background" Value="{StaticResource ContainerBackground}" />
+        </Style>
+
 
         <Style x:Key="ButtonGenerateStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Content" Value="Generate" />

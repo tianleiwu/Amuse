@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Amuse.UI.Views"
              xmlns:userControls="clr-namespace:Amuse.UI.UserControls"
              mc:Ignorable="d" 
@@ -35,7 +34,7 @@
                     </UniformGrid>
                 </StackPanel>
                 <Grid  >
-                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" />
+                    <userControls:CachedImage Stretch="UniformToFill" ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" />
                     <StackPanel>
                         <Border Background="Lime" Visibility="{Binding IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Installed" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
@@ -61,7 +60,7 @@
                     </UniformGrid>
                 </StackPanel>
                 <Grid>
-                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+                    <userControls:CachedImage Stretch="UniformToFill" ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
                     <StackPanel>
                         <Border Background="Lime" Visibility="{Binding IsInstalled, Converter={StaticResource BooleanToVisibilityConverter}}" BorderBrush="{StaticResource ContainerBackground}" BorderThickness="1" CornerRadius="0" Padding="4,0,4,1" HorizontalAlignment="Right" Margin="0">
                             <TextBlock Text="Installed" Foreground="{StaticResource ContainerBackground}" FontWeight="Bold" FontSize="11"/>
@@ -81,7 +80,7 @@
         <DataTemplate x:Key="LayoutListViewTemplate">
             <DockPanel Background="{StaticResource ContainerBackground}">
                 <StackPanel DockPanel.Dock="Left" Width="50" Height="50">
-                    <userControls:CachedImage ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+                    <userControls:CachedImage Stretch="UniformToFill" ImageUrl="{Binding ImageIcon, IsAsync=True}" Style="{StaticResource ListViewImageCacheStyle}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
                 </StackPanel>
                 <DockPanel DockPanel.Dock="Right">
 
@@ -174,7 +173,7 @@
                                                 <StackPanel Visibility="{Binding SelectedModelTemplate.Website, Converter={StaticResource NullVisibilityConverter}}" Margin="0,2,0,0">
                                                     <TextBlock Grid.Column="0" Grid.Row="2" Text="Website" FontStyle="Italic" FontSize="10" Opacity=".7"/>
                                                     <TextBlock Margin="0,-3,0,0">
-                                                         <Hyperlink NavigateUri="{Binding SelectedModelTemplate.Website}" Command="{Binding HyperLinkNavigateCommand}" CommandParameter="{Binding SelectedModelTemplate.Repository}" Foreground="LightBlue" >
+                                                         <Hyperlink NavigateUri="{Binding SelectedModelTemplate.Website}" Command="{Binding HyperLinkNavigateCommand}" CommandParameter="{Binding SelectedModelTemplate.Website}" Foreground="LightBlue" >
                                                             <Run Text="{Binding SelectedModelTemplate.Website}" />
                                                          </Hyperlink>
                                                     </TextBlock>
@@ -210,38 +209,64 @@
                                                     </Button>
                                                 </StackPanel>
 
-                                                <StackPanel>
-
-                                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Supported Features:" FontStyle="Italic" FontSize="10" Opacity=".7"/>
-
-                                                    <!--Template Details StableDiffusionTemplate-->
-                                                    <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.StableDiffusionTemplate, Converter={StaticResource NullVisibilityConverter}}">
-                                                        <ItemsControl ItemsSource="{Binding SelectedModelTemplate.StableDiffusionTemplate.DiffuserTypes}">
+                                                <DockPanel>
+                                                    <StackPanel DockPanel.Dock="Bottom" Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                        <TextBlock HorizontalAlignment="Right" Text="Tags:" FontStyle="Italic" FontSize="10" Opacity=".7" Margin="0,0,5,2"/>
+                                                        <ItemsControl  ItemsSource="{Binding SelectedModelTemplate.Tags}">
                                                             <ItemsControl.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
-                                                                        <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
-                                                                        <TextBlock Text="{Binding Converter={StaticResource EnumDescriptionConverter}}" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
-                                                                    </StackPanel>
+                                                                    <Button Content="{Binding StringFormat={}#{0}}" Command="{Binding ModelTemplateFilterTagCommand, ElementName=UI}" CommandParameter="{Binding}" Padding="10, 1" Margin="2" Background="{StaticResource AccentColour1}" HorizontalContentAlignment="Center" FontWeight="Medium" MinWidth="60"  />
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                             <ItemsControl.ItemsPanel>
                                                                 <ItemsPanelTemplate>
-                                                                    <StackPanel Orientation="Vertical" IsItemsHost="True" />
+                                                                    <WrapPanel IsItemsHost="True" HorizontalAlignment="Right" />
                                                                 </ItemsPanelTemplate>
                                                             </ItemsControl.ItemsPanel>
                                                         </ItemsControl>
                                                     </StackPanel>
+                            
 
-                                                    <!--Template Details UpscaleTemplate-->
-                                                    <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.UpscaleTemplate, Converter={StaticResource NullVisibilityConverter}}">
-                                                        <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
-                                                            <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
-                                                            <TextBlock Text="Image Upscale" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
+                                                    <StackPanel>
+
+                                                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Supported Features:" FontStyle="Italic" FontSize="10" Opacity=".7"/>
+
+                                                        <!--Template Details StableDiffusionTemplate-->
+                                                        <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.StableDiffusionTemplate, Converter={StaticResource NullVisibilityConverter}}">
+                                                            <ItemsControl ItemsSource="{Binding SelectedModelTemplate.StableDiffusionTemplate.DiffuserTypes}">
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                                                            <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
+                                                                            <TextBlock Text="{Binding Converter={StaticResource EnumDescriptionConverter}}" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <StackPanel Orientation="Vertical" IsItemsHost="True" />
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                            </ItemsControl>
                                                         </StackPanel>
+
+                                                        <!--Template Details UpscaleTemplate-->
+                                                        <StackPanel Margin="0,5,0,0" Visibility="{Binding SelectedModelTemplate.UpscaleTemplate, Converter={StaticResource NullVisibilityConverter}}">
+                                                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                                                <userControls:FontAwesome Icon="&#xf00c;" Color="Lime" Margin="0,0,3,0" />
+                                                                <TextBlock Text="Image Upscale" TextAlignment="Center" FontWeight="Bold" FontSize="12" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+
+
+
                                                     </StackPanel>
 
-                                                </StackPanel>
+                                                </DockPanel>
+
+
+
+
                                             </Grid>
                                         </UniformGrid>
                                     </StackPanel>
@@ -341,30 +366,30 @@
                             <!--Preview Images-->
                             <UniformGrid DockPanel.Dock="Bottom" Columns="4" Rows="1" Margin="4" Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1"  >
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0], IsAsync=True}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1], IsAsync=True}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2], IsAsync=True}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Name}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3], IsAsync=True}" />
                                 </Border>
                             </UniformGrid>
                             <UniformGrid DockPanel.Dock="Bottom" Columns="4" Rows="1" Margin="4" Visibility="{Binding SelectedModelTemplate.IsUserTemplate, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1"  >
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[0], IsAsync=True}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[1], IsAsync=True}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[2], IsAsync=True}" />
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="{StaticResource ContainerBorder}" Margin="1">
-                                    <userControls:CachedImage Stretch="Uniform" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3]}" />
+                                    <userControls:CachedImage IsLazyCache="True" CacheName="{Binding SelectedModelTemplate.Template}" Placeholder="{Binding Source={StaticResource PlaceholderImage}}" ImageUrl="{Binding SelectedModelTemplate.PreviewImages[3], IsAsync=True}" />
                                 </Border>
                             </UniformGrid>
 

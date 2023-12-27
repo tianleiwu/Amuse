@@ -403,7 +403,6 @@ namespace Amuse.UI.Views
                 NegativePrompt = promptOptions.NegativePrompt,
                 PipelineType = _selectedModel.ModelSet.PipelineType,
                 DiffuserType = promptOptions.DiffuserType,
-                SchedulerType = schedulerOptions.SchedulerType,
                 SchedulerOptions = schedulerOptions,
                 Elapsed = Stopwatch.GetElapsedTime(timestamp).TotalSeconds
             };

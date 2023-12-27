@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -70,6 +71,7 @@ namespace Amuse.UI.Views
             UninstallModelCommand = new AsyncRelayCommand(UninstallModel);
             DownloadModelCommand = new AsyncRelayCommand<bool>(DownloadModel);
             DownloadModelCancelCommand = new AsyncRelayCommand(DownloadModelCancel);
+            ModelTemplateFilterTagCommand = new AsyncRelayCommand<string>(ModelTemplateFilterSetTag);
             ModelTemplateFilterResetCommand = new AsyncRelayCommand(ModelTemplateFilterReset);
             UpdateModelMetadataCommand = new AsyncRelayCommand(UpdateModelMetadata);
             ViewModelMetadataCommand = new AsyncRelayCommand(ViewModelMetadata);
@@ -82,15 +84,6 @@ namespace Amuse.UI.Views
             InitializeComponent();
         }
 
-
-
-        private Task HyperLinkNavigate(string link)
-        {
-            Process.Start(new ProcessStartInfo(link) { UseShellExecute = true });
-            return Task.CompletedTask;
-        }
-
-
         public AsyncRelayCommand UpdateModelCommand { get; }
         public AsyncRelayCommand UpdateModelAdvancedCommand { get; }
         public AsyncRelayCommand RemoveModelCommand { get; }
@@ -98,6 +91,7 @@ namespace Amuse.UI.Views
         public AsyncRelayCommand UninstallModelCommand { get; }
         public AsyncRelayCommand<bool> DownloadModelCommand { get; }
         public AsyncRelayCommand DownloadModelCancelCommand { get; }
+        public AsyncRelayCommand<string> ModelTemplateFilterTagCommand { get; }
         public AsyncRelayCommand ModelTemplateFilterResetCommand { get; }
         public AsyncRelayCommand<string> HyperLinkNavigateCommand { get; }
         public AsyncRelayCommand AddUpscaleModelCommand { get; }
@@ -347,6 +341,21 @@ namespace Amuse.UI.Views
             return Task.CompletedTask;
         }
 
+
+        private Task HyperLinkNavigate(string link)
+        {
+            try
+            {
+                Utils.NavigateToUrl(link);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to navigate to URL: {ex.Message}");
+            }
+            return Task.CompletedTask;
+        }
+
+
         private Task<bool> SaveConfigurationFile()
         {
             try
@@ -423,9 +432,7 @@ namespace Amuse.UI.Views
                 return false;
 
             return (string.IsNullOrEmpty(_modelTemplateFilterText)
-                || template.Name.Contains(_modelTemplateFilterText, StringComparison.OrdinalIgnoreCase)
-                || (!string.IsNullOrEmpty(template.Description) && template.Description.Contains(_modelTemplateFilterText, StringComparison.OrdinalIgnoreCase))
-                || (!template.Tags.IsNullOrEmpty() && template.Tags.Any(x => x.StartsWith(x, StringComparison.OrdinalIgnoreCase))))
+                || template.Name.Contains(_modelTemplateFilterText, StringComparison.OrdinalIgnoreCase))
                 && (_modelTemplateFilterTag == "All" || (!template.Tags.IsNullOrEmpty() && template.Tags.Contains(_modelTemplateFilterTag, StringComparer.OrdinalIgnoreCase)))
                 && (_modelTemplateFilterAuthor == "All" || _modelTemplateFilterAuthor.Equals(template.Author, StringComparison.OrdinalIgnoreCase))
                 && (_modelTemplateFilterTemplateType is null || _modelTemplateFilterTemplateType == template.Template)
@@ -445,6 +452,11 @@ namespace Amuse.UI.Views
             return Task.CompletedTask;
         }
 
+        private Task ModelTemplateFilterSetTag(string selectedTag)
+        {
+            ModelTemplateFilterTag = selectedTag;
+            return Task.CompletedTask;
+        }
 
         private void ModelTemplateSort()
         {

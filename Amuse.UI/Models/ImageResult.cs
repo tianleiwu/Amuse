@@ -14,6 +14,8 @@ namespace Amuse.UI.Models
         [JsonIgnore]
         public StableDiffusionModelSetViewModel Model { get; set; }
 
+        public string ModelName => Model?.Name;
+
         public DateTime Timestamp { get; } = DateTime.UtcNow;
         public DiffuserPipelineType PipelineType { get; set; }
         public DiffuserType DiffuserType { get; init; }

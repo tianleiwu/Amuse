@@ -39,6 +39,11 @@ namespace Amuse.UI
             return cachePath;
         }
 
+        public static void NavigateToUrl(string url)
+        {
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+        }
+
         public static string RandomString()
         {
             return Path.GetFileNameWithoutExtension(Path.GetRandomFileName());

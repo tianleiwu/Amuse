@@ -282,13 +282,21 @@ This button will send the image to the Upscaler tab.
 Text To Image Stable Diffusion is a powerful machine learning technique that allows you to generate high-quality images from textual descriptions. It combines the capabilities of text understanding and image synthesis to convert natural language descriptions into visually coherent and meaningful images
 
 ## Image To Image
-* explain + screenshots
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/ec3edf41-a01c-405f-9b9e-59ed1b0d94e9)
+
+Image To Image Stable Diffusion is an advanced image processing and generation method that excels in transforming one image into another while preserving the visual quality and structure of the original content. Using stable diffusion, this technique can perform a wide range of image-to-image tasks, such as style transfer, super-resolution, colorization, and more
 
 ## Image Inpaint
-* explain + screenshots
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/c5ee2881-f006-456c-b540-25cd0acf11fe)
+
+Image inpainting is an image modification/restoration technique that intelligently fills in missing or damaged portions of an image while maintaining visual consistency. It's used for tasks like photo restoration and object removal, creating seamless and convincing results.
 
 ## Paint To Image
-* explain + screenshots
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/f326b5de-d571-4932-a8cd-27e37b0a76d9)
+
+Paint To Image is a cutting-edge image processing technique designed to revolutionize the creative process. This method allows users to paint on a canvas, transforming their artistic expressions into high-quality images while preserving the unique style and details of the original artwork. Harnessing the power of stable diffusion, Paint To Image opens up a realm of possibilities for artistic endeavors, enabling users to seamlessly translate their creative brushstrokes into visually stunning images. Whether it's digital art creation, stylized rendering, or other image manipulation tasks, Paint To Image delivers a versatile and intuitive solution for transforming painted canvases into captivating digital masterpieces.
 
 ## Upscale
-* explain + screenshots
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/51d1b7a3-762c-492a-b95c-d63c28f33d50)
+
+Upscaling is a technique that uses artificial intelligence algorithms to enhance the resolution and quality of images. By employing advanced neural networks, these algorithms analyze and predict missing details in low-resolution images, producing higher-resolution versions with improved clarity and sharpness. This technology is valuable for tasks such as enhancing old photos, improving video quality, and upscaling images for various applications, including gaming and content creation.

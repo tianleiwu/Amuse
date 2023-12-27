@@ -202,9 +202,9 @@ Karras Sigmas are an alternative type of noise scheduler used when generating im
 These are advanced settings that rarely need to be changed, more indepth technical information can be found here: https://huggingface.co/docs/diffusers/main/en/index
 
 ### Automation
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e222ea42-be25-44f2-bc1d-63797b08fc33)
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/0d79b5d2-ef5d-4bb1-9103-15051dc9d677)
 
-Automation is a handy way to conveniently fine tune images results easily. Automation allows you to define a range to iterate through for the selected automation type.
+Automation is a handy way to conveniently fine tune images results easily. Automation allows you to define a range to iterate through for the selected automation type. Automation is only active while viewing the Automation tab.
 
 #### Seed
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/2759a73e-fb5f-4c2e-8544-dbb3c97726af)

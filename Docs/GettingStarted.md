@@ -128,8 +128,7 @@ This button will uninstall the model. The model template will not be removed, an
 
 This button will uninstall the model and remove the template from Amuse. The model files will not be deleted.
 
-## Text To Image
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/33308b1f-d7e6-4044-a03e-80e65680a7c1)
+## Basic Controls
 
 ### Load Model
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/4a6b0f1f-3b68-4bd8-8ae7-cbe30377ceeb)
@@ -158,11 +157,6 @@ There are several options that impact the resulting images generated.
 
 A scheduler is responsible for managing and controlling the timing and order of events or processes. It determines when and in what sequence various tasks or actions should occur within the system. The scheduler plays a crucial role in coordinating the execution of different elements, ensuring a well-organized and efficient operation of the overall system. It helps optimize resource utilization, prioritize tasks, and maintain stability in the diffusion process by controlling the timing and sequence of events. The available schedulers will vary depending on the model being used.
 
-#### Live Update
-![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/dd3cbbf8-72eb-4bd5-ad2c-1639bf0f2aea)
-
-Enabling Live Update will cause images to be constantly generated in real time as changes to the settings are made, otherwise images will only be generated one at a time when the Generate button is clicked manually.
-
 #### Seed
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/c1726c03-2bde-40bd-9213-4b695c19c789)
 
@@ -172,12 +166,120 @@ A seed is a starting point for generating random numbers. The seed is an initial
 
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/69fb8765-487e-40b3-906d-14c2165d2ab3) This button will change the seed back to 0.
 
+#### Inference Steps
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/bee8bcf9-158d-4f1c-a8c0-19dc31a80f50)
 
+The number of inference steps plays a crucial role in the quality and diversity of the generated samples. Increasing the number of inference steps generally allows the model to capture more complex dependencies in the data and generate more realistic samples. However, this comes at the cost of increased computational time and resources.
 
-* explain + screenshots
-* prompt area
-* scheduler options
-* history
+#### Beta Schedule
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/8a3222fc-5f9f-408e-9e77-9f5890e2da20)
+
+The beta schedule is a strategy for dynamically adjusting the value of the beta hyperparameter during the training of generative models. It is employed to strike a balance between faithful reconstruction of input data and regularization of the latent space representation.
+
+#### Live Update
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/dd3cbbf8-72eb-4bd5-ad2c-1639bf0f2aea)
+
+Enabling Live Update will cause images to be constantly generated in real time as changes to the settings are made, otherwise images will only be generated one at a time when the Generate button is clicked manually.
+
+#### Width and Height
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/6299b148-761b-4e5c-aed1-01fe57e63663)
+
+These determin the height and width of the images being generated. The limitations of these dimension are determined by the model being used, for example, SD 1.5 should be 512x512.
+
+#### Guidance Scale
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/187ec3da-95af-4c04-b65d-51bb8f50254a)
+
+Guidance scale is the weighting given to the importance of the prompt when generating images. A higher scale will try to produce images more "like" the prompt, but may result in lower quality, and a lower scale will produce images with more creative variance from the prompt.
+
+#### Karras Sigmas
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/fc82b493-8fbd-467c-b58f-ad2ed7fa55e3)
+
+Karras Sigmas are an alternative type of noise scheduler used when generating images, changing the output.
+
+### Advanced Scheduler Options
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/b2db174d-b1b9-43d7-a64d-6e78a9c363c8)
+
+These are advanced settings that rarely need to be changed, more indepth technical information can be found here: https://huggingface.co/docs/diffusers/main/en/index
+
+### Automation
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e222ea42-be25-44f2-bc1d-63797b08fc33)
+
+Automation is a handy way to conveniently fine tune images results easily. Automation allows you to define a range to iterate through for the selected automation type.
+
+#### Seed
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/2759a73e-fb5f-4c2e-8544-dbb3c97726af)
+
+This will generate as many images as defined by the Count using a random seed for each one.
+
+#### Step
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/9f0f7802-2bc2-4841-9df4-5aed34d28176)
+
+This will create a range of images with different inference steps, starting at the defined starting number, ending at the defined ending number and incrementing the number of steps by the defined increment number.
+
+#### Guidance
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/46eae46c-ce7e-4159-b13f-4274ecd29d53)
+
+This will create a range of images with different guidance scales, starting at the defined starting number, ending at the defined ending number and incrementing the guidance scale by the defined increment number.
+
+#### Strength
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e7750033-1bfc-41ba-a380-e54ad2cc0143)
+
+This will create a range of images with different strength, starting at the defined starting number, ending at the defined ending number and incrementing the strength by the defined increment number.
+
+#### Scheduler
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/8801b309-d75b-4f53-a703-c5b6bc7d3aaa)
+
+This will generate one image each for different schedulers available.
+
+### History
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/56a3989c-83db-4d33-8cbe-d51f06dfdf47)
+
+History stores all of the results generated in a session provided history is enabled.
+
+### Image Results
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/f76138a5-fe8d-4d35-be11-d3cbab0c05a1)
+
+This displays the resulting image, as well as allowing you to save the image or pass it through to other workflows, such as Image to Image, Image Inpaint, etc.
+
+#### Save Image
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/0d18a8fa-b1f8-40be-a25c-8eb8fac66cc0)
+
+This button will let you choose where to save the image to.
+
+#### Save Blueprint
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/7e117dbb-c79e-4947-a8a4-e5038f14665d)
+
+This button will let you choose where to save the image blueprint to.
+
+#### Send to Text To Image
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e9d78035-2314-4e9c-a76b-8ab08994eda6)
+
+This button will send the image blueprint to the Text To Image tab.
+
+#### Send to Image To Image
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/f56bf7dc-214c-4762-9cec-f2aaed68b725)
+
+This button will send the image to the Image To Image tab.
+
+#### Send to Image Inpaint
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/bf4a19f5-88fd-4b73-852d-8cd4d5a0f4f0)
+
+This button will send the image to the Image Inpaint tab.
+
+#### Send to Paint To Image
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/e7738dcb-124c-4f3d-8e8b-f0447209b44c)
+
+This button will send the image to the Paint To Image tab.
+
+#### Send to Upscaler
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/219c77a3-d76f-47d6-8c8f-fdb16a25c0cc)
+
+This button will send the image to the Upscaler tab.
+
+## Text To Image
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/33308b1f-d7e6-4044-a03e-80e65680a7c1)
+
+Text To Image Stable Diffusion is a powerful machine learning technique that allows you to generate high-quality images from textual descriptions. It combines the capabilities of text understanding and image synthesis to convert natural language descriptions into visually coherent and meaningful images
 
 ## Image To Image
 * explain + screenshots

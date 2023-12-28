@@ -3,6 +3,10 @@
 </p> 
 
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Stackyard-AI/Amuse)
+[![Discord](https://img.shields.io/discord/1189738352715513967?label=Discord&)](https://discord.gg/hThP5VRuHA)
+[![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCIBJC3QFZm0ocvove8oqmSg)](https://www.youtube.com/@StackyardAI)
+### **[Discord](https://discord.gg/hThP5VRuHA)**  | **[Youtube](https://www.youtube.com/@StackyardAI)**
+__________________________
 
 # Welcome to Amuse!
 

@@ -126,25 +126,7 @@ namespace Amuse.UI.UserControls
                     }
                 }
 
-                //TODO: ApplyConfigurationOverrides updates the ModelConfigurations, so clone the item here until fixed
-                SelectedModel.ModelSet.InitBlankTokenArray();
-                var modelSet = SelectedModel.ModelSet with
-                {
-                    ModelConfigurations = SelectedModel.ModelSet.ModelConfigurations.Select(x => new OnnxStack.Core.Config.OnnxModelConfig
-                    {
-                        DeviceId = x.DeviceId,
-                        ExecutionMode = x.ExecutionMode,
-                        ExecutionProvider = x.ExecutionProvider,
-                        InterOpNumThreads = x.InterOpNumThreads,
-                        IntraOpNumThreads = x.IntraOpNumThreads,
-                        OnnxModelPath = x.OnnxModelPath,
-                        Type = x.Type,
-                    }).ToList()
-                };
-                modelSet.InitBlankTokenArray();
-                modelSet.ApplyConfigurationOverrides();
-                await _stableDiffusionService.AddModelAsync(modelSet);
-                SelectedModel.IsLoaded = await _stableDiffusionService.LoadModelAsync(modelSet);
+                SelectedModel.IsLoaded = await _stableDiffusionService.LoadModelAsync(SelectedModel.ModelSet);
             }
             catch (Exception ex)
             {

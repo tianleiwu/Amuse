@@ -37,7 +37,7 @@ namespace Amuse.UI.UserControls
 
         public AsyncRelayCommand LoadCommand { get; set; }
         public AsyncRelayCommand UnloadCommand { get; set; }
-  
+
         public AmuseSettings UISettings
         {
             get { return (AmuseSettings)GetValue(UISettingsProperty); }
@@ -84,23 +84,7 @@ namespace Amuse.UI.UserControls
                     }
                 }
 
-                //TODO: ApplyConfigurationOverrides updates the ModelConfigurations, so clone the item here until fixed
-                var modelSet = SelectedModel.ModelSet with
-                {
-                    ModelConfigurations = SelectedModel.ModelSet.ModelConfigurations.Select(x => new OnnxStack.Core.Config.OnnxModelConfig
-                    {
-                        DeviceId = x.DeviceId,
-                        ExecutionMode = x.ExecutionMode,
-                        ExecutionProvider = x.ExecutionProvider,
-                        InterOpNumThreads = x.InterOpNumThreads,
-                        IntraOpNumThreads = x.IntraOpNumThreads,
-                        OnnxModelPath = x.OnnxModelPath,
-                        Type = x.Type,
-                    }).ToList()
-                };
-                modelSet.ApplyConfigurationOverrides();
-                await _upscaleService.AddModelAsync(modelSet);
-                SelectedModel.IsLoaded = await _upscaleService.LoadModelAsync(modelSet);
+                SelectedModel.IsLoaded = await _upscaleService.LoadModelAsync(SelectedModel.ModelSet);
             }
             catch (Exception ex)
             {

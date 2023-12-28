@@ -31,7 +31,7 @@
                 <UniformGrid Columns="5" Margin="0,3" Width="{Binding SchedulerOptions.Width, FallbackValue=512}" MinWidth="512">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="Scheduler:" Margin="5,0,0,0"  FontSize="10" Opacity=".6" VerticalAlignment="Center" FontStyle="Italic"/>
-                        <TextBlock Text="{Binding Result.SchedulerType}" Margin="5,0,0,0"/>
+                        <TextBlock Text="{Binding Result.SchedulerOptions.SchedulerType}" Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                         <TextBlock Text="Steps:" Margin="5,0,0,0" FontSize="10" Opacity=".6" VerticalAlignment="Center" FontStyle="Italic"/>

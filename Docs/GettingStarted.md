@@ -1,15 +1,10 @@
 # Getting Started With Amuse
 
-## Download & Install
-Zip
-* explain + screenshots
-* download
-* copy somewhere
-* run
+## Download the Latest Portable Release for Amuse
 
-Installer
-* explain + screenshots
-* installer, run
+[![Download Amuse](https://img.shields.io/github/v/release/Stackyard-AI/Amuse?label=Download&style=flat-square)](https://github.com/Stackyard-AI/Amuse/releases/download/v1.0.0/Amuse.zip)
+
+Once downloaded, choose a directory to install Amuse to and copy the Amuse folder and all of it's contents into it. Then simply run Amuse.exe to get started.
 
 ## Settings Page
 ![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/b2e941da-977d-450c-aabc-bc56b5f8e7de)

@@ -71,6 +71,14 @@ Image inpainting is an image modification/restoration technique that intelligent
 
 https://github-production-user-asset-6210df.s3.amazonaws.com/90013272/292652258-c6ffbb17-98d2-483a-9eab-04e4dfad1102.mp4
 
+## Model Manager
+![image](https://github.com/Stackyard-AI/Amuse/assets/90013272/0539f55d-96fd-4a12-95f4-9d16ac335859)
+
+Discover the simplicity of our Model Manager – your all-in-one tool for stress-free model management. Easily navigate through an intuitive interface that takes the hassle out of deploying, updating, and monitoring your stable diffusion models. No need for configuration headaches; our Model Manager makes it a breeze to install new models. Stay in control effortlessly, and let your creative process evolve smoothly.
+
+## Getting Started
+Get started now with our helpful documentation: https://github.com/Stackyard-AI/Amuse/blob/master/Docs/GettingStarted.md
+
 __________________________
 
 

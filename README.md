@@ -24,6 +24,16 @@ __________________________
 
 - **Model Management:** Install, download and manage all your models in a simple user interafce.
 
+Amuse provides compatibility with a diverse set of models, including 
+- StableDiffusion 1.5
+- StableDiffusion Inpaint
+- SDXL
+- SDXL Inpaint
+- SDXL-Turbo
+- LatentConsistency
+- LatentConsistency XL
+- Instaflow
+
 __________________________
 
 ## Why Choose Amuse?

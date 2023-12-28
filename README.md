@@ -2,10 +2,11 @@
     <img width="50%" src="Assets/Amuse-Logo-512.png">
 </p> 
 
-![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Stackyard-AI/Amuse)
+[![Download Amuse](https://img.shields.io/github/v/release/Stackyard-AI/Amuse?label=Download&style=flat-square)](https://github.com/Stackyard-AI/Amuse/releases/download/v1.0.0/Amuse.zip)![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Stackyard-AI/Amuse)
 [![Discord](https://img.shields.io/discord/1189738352715513967?label=Discord&)](https://discord.gg/hThP5VRuHA)
 [![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCIBJC3QFZm0ocvove8oqmSg)](https://www.youtube.com/@StackyardAI)
-### **[Discord](https://discord.gg/hThP5VRuHA)**  | **[Youtube](https://www.youtube.com/@StackyardAI)**
+### **[Discord](https://discord.gg/hThP5VRuHA)**  | **[Youtube](https://www.youtube.com/@StackyardAI)** | **[Download](https://github.com/Stackyard-AI/Amuse/releases/download/v1.0.0/Amuse.zip)**
+
 __________________________
 
 # Welcome to Amuse!
